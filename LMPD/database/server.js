@@ -11,8 +11,8 @@ import csvParser from 'csv-parser';
 
 const app = express();
 const port = 3000;
-const accountSid = 'AC2fd4660aba866740ea25ef70e88dfb75';
-const authToken = '785e4fde0fbc970912045197552e74b4';
+const accountSid = '';
+const authToken = '';
 const client = new twilio(accountSid, authToken);
 
 app.use(cors());
