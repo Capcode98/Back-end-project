@@ -3,7 +3,6 @@ import pkg from 'pg';
 const { Pool } = pkg;
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import twilio from 'twilio';
 import multer from 'multer';
 import fs from 'fs';
 import csvParser from 'csv-parser';
