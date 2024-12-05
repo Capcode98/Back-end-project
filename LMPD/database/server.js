@@ -3,6 +3,7 @@ import pkg from 'pg';
 const { Pool } = pkg;
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import twilio from 'twilio';
 import multer from 'multer';
 import fs from 'fs';
 import csvParser from 'csv-parser';
@@ -10,6 +11,9 @@ import csvParser from 'csv-parser';
 
 const app = express();
 const port = 3000;
+const accountSid = 'AC2fd4660aba866740ea25ef70e88dfb75';
+const authToken = '785e4fde0fbc970912045197552e74b4';
+const client = new twilio(accountSid, authToken);
 app.use(cors());
 app.use(bodyParser.json());
 
