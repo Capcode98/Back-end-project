@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise de Dados</title>
+    <link rel="shortcut icon" href="img/favicon_io/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="css/grafico_pizza.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script> <!-- Carregue o Chart.js antes -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html" alt="inicio"><img src="img/logo03.png" alt="logo"></a>
+            <p>LMPD</p>
+            <a href="#"><span class="material-symbols-icon-menu">menu</span></a>
+        </div>
+        
+        <nav >  
+            <ul class="menu_bar">
+                <li>
+                    <a href="indexCadastrado.html"><span class="material-symbols-outlined" >home</span>Início</a>
+                </li>
+                <li>
+                    <a href="Coleta.html"><span class="material-symbols-outlined">add_chart</span>Coleta</a>
+                </li>
+                <li>
+                    <a href="#" ><span class="material-symbols-icon" > notifications</span></a>
+                </li>
+                <li>
+                    <a href="#" ><span class="material-symbols-icon"> settings</span></a>
+                </li>
+                <li >
+                    <a href="#" ><span class="material-symbols-icon" >account_circle</span></a>
+                </li>
+            </ul>    
+        </nav>
+    </header>
+
+
+    <section class="grid1">
+        <div class="sidebar">
+            <nav>
+                <ul class="menu_lateral">
+                    <li>
+                        <a href="Tela_analise.html"><span class="material-symbols-outlined">grid_view</span>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="grafico_tabela.html"><span class="material-symbols-outlined">table</span>Tabela</a>
+                    </li>
+
+                    <li>
+                        <a href="grafico_pizza.html" id="cor_fundo_pizza"><span class="material-symbols-outlined">pie_chart</span>Pizza</a>
+                    </li>
+
+                    <li>
+                        <a href="relatorio.html"><span class="material-symbols-outlined">circle</span>Relatório</a>
+                    </li>
+
+                    <li>
+                        <a href="grafico_barra.html"  ><span class="material-symbols-outlined">stacked_bar_chart</span>Barra</a>
+                    </li>
+
+                    <li>
+                        <a href="grafico_linha.html" ><span class="material-symbols-outlined">show_chart</span>Linha</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <section class="tela_de_dados">
+
+            <div class="conteudo1">
+                <canvas id="grafico1"></canvas>
+             </div>             
+
+            <div class="conteudo2">
+                <canvas id="grafico2" >
+                    <script>
+                        document.addEventListener('DOMContentLoaded', async () => {
+                            try {
+                                const response = await fetch('http://localhost:3000/dados-graficos');
+                                const data = await response.json();
+                
+                                const labelsX = data.map(item => item.curso);
+                                const valoresY2024 = data.map(item => parseFloat(item.media));
+                
+                                const ctx = document.getElementById('grafico2').getContext('2d');
+                                const grafico1 = new Chart(ctx, {
+                                    type: 'pie',
+                                    data: {
+                                        labels: labelsX,
+                                        datasets: [{
+                                            label: 'Média por Curso em 2024',
+                                            data: valoresY2024,
+                                            backgroundColor: [
+                                                'rgb(255, 99, 132)',
+                                                'rgb(54, 162, 235)',
+                                                'rgb(255, 205, 86)',
+                                                'rgb(75, 192, 100)',
+                                                'rgb(153, 102, 255)',
+                                                'rgb(255, 159, 64)'
+                                            ],
+                                            hoverOffset: 10
+                                        }]
+                                    },
+                                    options: {
+                                        responsive: true,
+                                        maintainAspectRatio: false,
+                                    }
+                                });
+                            } catch (err) {
+                                console.error('Erro ao carregar dados do gráfico:', err);
+                            }
+                        });
+                    </script>
+                   </canvas>
+            </div>
+
+<script src="./javascript/Pizza.js"></script>
+        </section>
+    </section>
+</body>
+</html>

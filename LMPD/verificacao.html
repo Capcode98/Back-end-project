@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <title>Verificação de Código</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <a href="Login.html">Voltar</a>
+            <br><br><br><br>
+            <h1>Verificação de Código<br> (SMS)</h1>
+
+            <div id="msgError"></div>
+
+            <div class="label-float">
+                <input type="text" id="codigoVerificacao" placeholder="" required />
+                <label for="codigoVerificacao">Insira o código de verificação</label>
+              </div>
+
+            <p>
+                Não recebeu o código? <button onclick="enviarCodigo()">Reenviar</button>
+            </p>
+            <br>
+
+            <div class="justify-center">
+                <button onclick="verificarCodigo()">Verificar</button>
+            </div>
+            <br>
+
+        </div>
+    </div>
+
+    <script src="./javascript/verifica.js"></script>
+</body>
+
+</html>

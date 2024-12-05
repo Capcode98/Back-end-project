@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analise de Dados</title>
+    <link rel="shortcut icon" href="img/favicon_io/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="css/grafico_tabela.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html" alt="inicio"><img src="img/logo03.png" alt="logo"></a>
+            <p>LMPD</p>
+            <a href="#"><span class="material-symbols-icon-menu">menu</span></a>
+        </div>
+        
+        <nav >  
+            <ul class="menu_bar">
+                <li>
+                    <a href="indexCadastrado.html"><span class="material-symbols-outlined" >home</span>Início</a>
+                </li>
+                <li>
+                    <a href="Coleta.html"><span class="material-symbols-outlined">add_chart</span>Coleta</a>
+                </li>
+                <li>
+                    <a href="#" ><span class="material-symbols-icon" > notifications</span></a>
+                </li>
+                <li>
+                    <a href="#" ><span class="material-symbols-icon"> settings</span></a>
+                </li>
+                <li >
+                    <a href="#" ><span class="material-symbols-icon" >account_circle</span></a>
+                </li>
+            </ul>    
+        </nav>
+    </header>
+
+
+    <section class="grid1">
+        <div class="sidebar">
+            <nav>
+                <ul class="menu_lateral">
+                    <li>
+                        <a href="Tela_analise.html"><span class="material-symbols-outlined">grid_view</span>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="grafico_tabela.html" id="cor_fundo_tabela" ><span class="material-symbols-outlined">table</span>Tabela</a>
+                    </li>
+
+                    <li>
+                        <a href="grafico_pizza.html"><span class="material-symbols-outlined">pie_chart</span>Pizza</a>
+                    </li>
+
+                    <li>
+                        <a href="relatorio.html"><span class="material-symbols-outlined">circle</span>Relatório</a>
+                    </li>
+
+                    <li>
+                        <a href="grafico_barra.html"  ><span class="material-symbols-outlined">stacked_bar_chart</span>Barra</a>
+                    </li>
+
+                    <li>
+                        <a href="grafico_linha.html" ><span class="material-symbols-outlined">show_chart</span>Linha</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <section class="tela_de_dados">
+            <div class="conteudo1">
+                <table id="minhaTabela" class="display">
+                    <thead>
+                        <tr>
+                            <th>Curso</th>
+                            <th>Matéria</th>
+                            <th>Média de Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabela-corpo">
+                        <!-- Linhas da tabela serão inseridas aqui -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <script>
+            // Função para buscar os dados da tabela diretamente da API
+            async function fetchDadosTabela() {
+                try {
+                    const response = await fetch('http://localhost:3000/dados-tabela');
+                    if (!response.ok) throw new Error('Erro ao buscar dados da tabela');
+                    return await response.json();
+                } catch (error) {
+                    console.error('Erro:', error);
+                    return [];
+                }
+            }
+        
+            // Função para preencher a tabela com os dados
+            async function preencherTabela() {
+                const dadosTabela = await fetchDadosTabela();
+        
+                const corpoTabela = document.getElementById('tabela-corpo');
+                corpoTabela.innerHTML = ''; // Limpa as linhas anteriores
+        
+                // Preenche as linhas da tabela com os dados recebidos
+                dadosTabela.forEach(dado => {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${dado.curso}</td>
+                        <td>${dado.materia}</td>
+                        <td>${dado.media_nota}</td>
+                    `;
+                    corpoTabela.appendChild(tr);
+                });
+            }
+        
+            // Chama a função para preencher a tabela ao carregar a página
+            document.addEventListener('DOMContentLoaded', preencherTabela);
+        </script>
+        
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon_io/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/Coleta.css">
+    <script src="javascript/script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Coleta de Dados</title>
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html" alt="inicio"><img src="img/logo03.png" alt="logo"></a>
+            <p>LMPD</p>
+        </div>
+        <nav >  
+            <ul class="menu_bar">
+                <li>
+                    <a href="index.html"><span class="material-symbols-outlined" >home</span>Início</a>
+                </li>
+                <li>
+                    <a href="Coleta.html"><span class="material-symbols-outlined">add_chart</span>Coleta De Dados</a>
+                </li>
+                <li>
+                    <a href="Tela_analise.html" ><span class="material-symbols-icon" > analytics </span>Análise de dados</a>
+                </li>
+                <li>
+                    <a href="Login.html"  ><span class="material-symbols-icon"> login</span></a>
+                </li>
+                <li >
+                    <a href="#" ><span class="material-symbols-icon" >account_circle</span></a>
+                </li>
+            </ul>    
+        </nav>
+    </header>
+    <main>
+        <section class="Centro">
+            <div class="Centro-Text">
+                <h1>Bem-vindo à área de coleta de dados</h1>
+            </div>
+            <div class="container-upload">
+                <!-- Botão de upload -->
+                <input type="file" id="input-arquivo" accept=".csv" hidden>
+                <div class="caixa-upload" id="caixa-upload">
+                    <p id="texto-arrastar">
+                        Arraste e solte seu arquivo CSV aqui, ou 
+                        <label for="input-arquivo" id="texto-selecionar" style="cursor: pointer;">selecione</label>
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="javascript/Coleta.js"></script>
+</body>
+</html>
