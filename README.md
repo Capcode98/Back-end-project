@@ -68,7 +68,7 @@
 
 - Clone o projeto com o seguinte comando:
 
-        git clone https://github.com/Capcode98/back-end.git
+        git clone https://github.com/Capcode98/Back-end-project.git
     
 
 - Instale as dependências necessarias do projeto, com o seguinte comando:
